@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:32:46 by vmustone          #+#    #+#             */
-/*   Updated: 2023/09/30 00:47:46 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/01 05:13:00 by villemuston      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "PhoneBook.hpp"
 
-using std::string;
+using namespace std;
 
 class Contact{
 private:
@@ -26,10 +26,11 @@ string PhoneNumber;
 string DarkestSecret;
 
 public:
+	Contact();
 	string	GetFirstName(void)const;
 	string	GetLastName(void)const;
 	string	GetNickName(void)const;
-	string GetPhoneNumber(void)const;
+	string	GetPhoneNumber(void)const;
 	string	GetDarkestSecret(void)const;
 
 	void	SetFirstName(std::string input);

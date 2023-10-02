@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:38:35 by vmustone          #+#    #+#             */
-/*   Updated: 2023/09/30 01:11:24 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/01 05:26:24 by villemuston      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 # include <iostream>
 # include <iomanip>
 # include <string>
+# include <stdio.h>
 # include "Contact.hpp"
 
-using std::cout;
-using std::cin;
-using std::getline;
+using namespace std;
 
 class PhoneBook{
 private:
-	Contact *contacts[8];
+	Contact contacts[8];
 	int	index;
 	
 public:

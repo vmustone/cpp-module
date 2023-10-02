@@ -1,70 +1,90 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:45:24 by vmustone          #+#    #+#             */
-/*   Updated: 2023/09/30 01:39:28 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/01 05:47:18 by villemuston      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
-{
-	for(int i = 0; i < 8; i++){
-		contacts[i] = '\0';
-	}
+PhoneBook::PhoneBook(){
 	index = 0;
 }
 
-void PhoneBook::addContact()
-{
-	int i;
-	if (i < 8)
-	{
-		Contact *newContact = new Contact;
-		
-		std::string input;
+void PhoneBook::addContact(){	
+	string input;
 
-		std::cout << "Enter first name: ";
-		std::getline(std::cin, input);
-		newContact->SetFirstName(input);
-
-		std::cout << "Enter last name: ";
-		std::getline(std::cin, input);
-		newContact->SetLastName(input);
-
-		std::cout << "Enter nickname: ";
-		std::getline(std::cin, input);
-		newContact->SetNickName(input);
-
-		std::cout << "Enter phone number: ";
-		std::getline(std::cin, input);
-		newContact->SetPhoneNumber(input);
-
-		std::cout << "Enter darkest secret: ";
-		std::getline(std::cin, input);
-		newContact->SetDarkestSecret(input);
-		contacts[i] = newContact;
+	cout << "Enter first name: ";
+	getline(cin, input);
+	while (input.empty()){
+		cout << "try again ";
+		getline(cin, input);
 	}
+	contacts[index % 8].SetFirstName(input);
+	
+	cout << "Enter last name: ";
+	getline(cin, input);
+	while (input.empty()){
+		cout << "try again ";
+		getline(cin, input);
+	}
+	contacts[index % 8].SetLastName(input);
+
+	cout << "Enter nickname: ";
+	getline(cin, input);
+	while (input.empty()){
+		cout << "try again ";
+		getline(cin, input);
+	}
+	contacts[index % 8].SetNickName(input);
+
+	cout << "Enter phone number: ";
+	getline(cin, input);
+	while (input.empty()){
+		cout << "try again ";
+		getline(cin, input);
+	}
+	contacts[index % 8].SetPhoneNumber(input);
+
+	cout << "Enter darkest secret: ";
+	getline(cin, input);
+	while (input.empty()){
+		cout << "try again ";
+		getline(cin, input);
+	}
+	contacts[index % 8].SetDarkestSecret(input);
+
+	index++;
 }
 
-void PhoneBook::displayContacts() {
-    std::cout << std::setw(10) << "Index" << "|";
-    std::cout << std::setw(10) << "First Name" << "|";
-    std::cout << std::setw(10) << "Last Name" << "|";
-    std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
-    std::cout << "---------------------------------------------" << std::endl;
+void	PhoneBook::displayContacts(){
+	string input;
+	int id;
+	
+	cout << "|     Index|First name| Last name| Nickname" << endl;
+	for (int i = 0; i < 8; i++){
+		cout << "|" << setw(10) << i;
+		cout << "|" << setw(10) << contacts[i].GetFirstName();
+		cout << "|" << setw(10) << contacts[i].GetLastName();
+		cout << "|" << setw(10) << contacts[i].GetNickName();
+		cout << endl;
+	}
 
-    for (int i = 0; i < 8; i++) {
-        if (contacts[i]) {
-            std::cout << std::setw(10) << i << "|";
-            std::cout << std::setw(10) << contacts[i]->GetFirstName() << "|";
-            std::cout << std::setw(10) << contacts[i]->GetLastName() << "|";
-            std::cout << std::setw(10) << contacts[i]->GetNickName() << "|" << std::endl;
-        }
-    }
+	cout << "Enter index" << endl;
+	getline(cin, input);
+	id = stoi(input);
+	if (id < 0 || id > 7)
+		cout << "invalid index" << endl;
+	else {
+		cout << "First name: " << contacts[id].GetFirstName() << endl;
+		cout << "Last name: " << contacts[id].GetLastName() << endl;
+		cout << "Nickname: " << contacts[id].GetNickName() << endl;
+		cout << "Phonenumber: " << contacts[id].GetPhoneNumber() << endl;
+		cout << "Darkest secret: " << contacts[id].GetDarkestSecret() << endl;
+	}
 }
