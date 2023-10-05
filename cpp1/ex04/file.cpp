@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   file.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 21:28:07 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/05 13:04:53 by vmustone         ###   ########.fr       */
+/*   Created: 2023/10/05 15:42:51 by vmustone          #+#    #+#             */
+/*   Updated: 2023/10/05 16:06:58 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "file.hpp"
 
-HumanB::HumanB(string name) : _name(name){
-	_gun = NULL;
-}
-
-void HumanB::attack() {
-	if (_gun != NULL && _gun->getType() != "") 
-		cout << _name << " attacks with their " << _gun->getType() << endl;
-	else
-		cout << _name << " attacks with their bare hands" << endl;
-}
-
-void	HumanB::setWeapon(Weapon& type) {
-	_gun = &type;
+File::File(string filename, string s1, string s2) {
+	ifstream filename;
 }

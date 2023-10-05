@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:28:24 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 21:59:34 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:46:02 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <string>
 # include <iostream>
-# include "HumanA.hpp"
-# include "HumanB.hpp"
 
 using std::string;
 using std::cout;
@@ -27,7 +25,7 @@ class Weapon {
 		string _type;
 	public:
 		Weapon(string weapon);
-		string getType();
+		string	getType();
 		void	setType(string name);
 };
 

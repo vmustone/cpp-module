@@ -6,11 +6,13 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:24:53 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 21:54:14 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:08:01 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
