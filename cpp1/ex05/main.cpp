@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 15:40:43 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/09 05:11:21 by villemuston      ###   ########.fr       */
+/*   Created: 2023/10/09 05:47:10 by villemuston       #+#    #+#             */
+/*   Updated: 2023/10/09 05:59:18 by villemuston      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_HPP
-# define FILE_HPP
-# include <string>
-# include <iostream>
-# include <fstream>
+#include "Harl.hpp"
 
-using std::string;
-using std::cout;
-using std::endl;
-using std::cerr;
-using std::ifstream;
-using std::ofstream;
-using std::getline;
+int main() {
+    Harl harl;
+    
+    harl.complain("DEBUG");
+    harl.complain("INFO");
+    harl.complain("WARNING");
+    harl.complain("ERROR");
+    harl.complain("UNKNOWN");
 
-class File {
-	private:
-		string inputFile;
-		string outputFile;
-	public:
-		void	replaceInFile(string filename, string s1, string s2);
-};
-#endif
+    return 0;
+}
