@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 05:49:51 by villemuston       #+#    #+#             */
-/*   Updated: 2023/10/09 20:38:20 by vmustone         ###   ########.fr       */
+/*   Created: 2023/10/09 21:01:53 by vmustone          #+#    #+#             */
+/*   Updated: 2023/10/10 02:04:53 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef FIXED_HPP
+#define FIXED_HPP
+#include <iostream>
 
-# include <iostream>
-# include <string>
+class Fixed {
+	private:
+		int _value;
+		static const int _bits = 8;
+		
+	public:
+		Fixed();
+		Fixed(const Fixed& object);
+		~Fixed();
+		
+		int		getRawBits( void )const;
+		void	setRawBits( int const raw );
 
-class Harl {
-    private:
-        void    debug( void );
-        void    info( void );
-        void    warning( void );
-        void    error( void );
-    
-    public:
-    void	complain(std::string level);
+		Fixed&	operator=(const Fixed& object);
+
 };
-typedef void	(Harl::*t_func) (void);
 #endif

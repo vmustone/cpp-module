@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
+/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:47:10 by villemuston       #+#    #+#             */
-/*   Updated: 2023/10/09 05:59:18 by villemuston      ###   ########.fr       */
+/*   Updated: 2023/10/09 20:03:13 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main() {
+int main(int argc, char **argv) {
     Harl harl;
     
     harl.complain("DEBUG");
     harl.complain("INFO");
     harl.complain("WARNING");
     harl.complain("ERROR");
-    harl.complain("UNKNOWN");
 
+	if (argc == 2)
+		harl.complain(argv[1]);
     return 0;
 }

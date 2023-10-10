@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   file.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
+/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:42:51 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/09 05:34:40 by villemuston      ###   ########.fr       */
+/*   Updated: 2023/10/09 22:16:15 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file.hpp"
 
 void File::replaceInFile(string filename, string s1, string s2) {
-    ifstream inputFile(filename);
+    if (s1 == "") {
+		cout << "Nothing to replace" << endl;
+		exit(1);
+	}
+
+	ifstream inputFile(filename);
 
     if (!inputFile) {
         cerr << "Error: Unable to open input file." << endl;

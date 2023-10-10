@@ -3,44 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
+/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:51:48 by villemuston       #+#    #+#             */
-/*   Updated: 2023/10/09 06:00:23 by villemuston      ###   ########.fr       */
+/*   Updated: 2023/10/09 20:41:44 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-void    Harl::debug(void) {
-    std::cout << "Harl complains at DEBUG level." << std::endl;
+void    Harl::debug( void ) {
+    std::cout << "[DEBUG] I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
 
-void    Harl::info(void) {
-    std::cout << "Harl complains at INFO level." << std::endl;
+void    Harl::info( void ) {
+    std::cout << "[INFO] I cannot believe adding extra bacon costs more money. You didn't put \
+enough bacon in my burger! If you did, I wouldn't be asking for more!" << std::endl;
 }
 
-void    warning(void) {
-    std::cout << "Harl complains at WARNING level." << std::endl;
+void    Harl::warning( void ) {
+    std::cout << "[WARNING] I think I deserve to have some extra bacon for free. I've been coming for \
+years whereas you started working here since last month." << std::endl;
 }
 
-void    Harl::error(void) {
-    std::cout << "Harl complains at ERROR level." << std::endl;
+void    Harl::error( void ) {
+    std::cout << "[ERROR] This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void    Harl::complain(std::string level) {
-    std::map<std::string, std::function<void()>> complaintMap = {
-        {"DEBUG", std::bind(&Harl::debug, this)},
-        {"INFO", std::bind(&Harl::info, this)},
-        {"WARNING", std::bind(&Harl::warning, this)},
-        {"ERROR", std::bind(&Harl::error, this)}
-    }
+void    Harl::complain(std::string level)
+{
+    std::string choice[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    t_func funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-        auto it = complaintMap.find(level);
-        if (it != complaintMap.end()) {
-            it->second();
-        } else {
-            std::cout << "Harl doesn't know how to complain at " << level << " level." << std::endl;
+    for (int i = 0; i < 4; i++)
+    {
+        if (level == choice[i])
+        {
+            (this->*funcs[i])();
+            return ;
         }
     }
+    std::cout << "Harl doesn't know how to complain at " << level << " level." << std::endl;
 }

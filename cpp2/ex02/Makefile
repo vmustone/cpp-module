@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/09 05:47:37 by villemuston       #+#    #+#              #
-#    Updated: 2023/10/09 19:37:02 by vmustone         ###   ########.fr        #
+#    Created: 2023/10/10 01:25:02 by vmustone          #+#    #+#              #
+#    Updated: 2023/10/10 01:25:13 by vmustone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Name = harl
+Name = fixed
 
 Flags = -std=c++98 -Wall -Werror -Wextra
 
-Src = main.cpp Harl.cpp
+Src = main.cpp Fixed.cpp
 
 Obj = $(Src:%.cpp=%.o)
 
