@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 19:13:01 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 19:59:24 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:30:31 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ Zombie::Zombie() {
 	_name = "";
 }
 
-string	Zombie::getName() {
-	return _name;
+Zombie::~Zombie() {
 }
 
-void	Zombie::setName(string newName) {
+void	Zombie::setName(std::string newName) {
 	_name = newName;
 }
 
 void	Zombie::announce() {
-	cout << _name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout << _name << ": BraiiiiiiinnnzzzZ...\n";
 }

@@ -6,46 +6,47 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:42:51 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/09 22:16:15 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:27:46 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file.hpp"
 
-void File::replaceInFile(string filename, string s1, string s2) {
-    if (s1 == "") {
-		cout << "Nothing to replace" << endl;
+void File::replaceInFile(std::string filename, std::string s1, std::string s2) {
+    /*
+	if (s1 == "") {
+		std::cout << "Nothing to replace" << std::endl;
 		exit(1);
 	}
-
-	ifstream inputFile(filename);
+	*/
+	std::ifstream inputFile(filename);
 
     if (!inputFile) {
-        cerr << "Error: Unable to open input file." << endl;
+        std::cerr << "Error: Unable to open input file." << std::endl;
         return;
     }
 
-    string outputFilename = filename + ".replace";
-    ofstream outputFile(outputFilename);
+    std::string outputFilename = filename + ".replace";
+    std::ofstream outputFile(outputFilename);
 
     if (!outputFile) {
-        cerr << "Error: Unable to create output file." << std::endl;
+        std::cerr << "Error: Unable to create output file." << std::endl;
         return;
     }
 
-    string line;
+    std::string line;
 
-    while (getline(inputFile, line)) {
+    while (std::getline(inputFile, line)) {
         size_t startPos = 0;
         size_t foundPos;
 
-        while ((foundPos = line.find(s1, startPos)) != string::npos) {
+        while ((foundPos = line.find(s1, startPos)) != std::string::npos) {
             outputFile << line.substr(startPos, foundPos - startPos);
             outputFile << s2;
             startPos = foundPos + s1.length();
         }
-		
-        outputFile << line.substr(startPos) << std::endl;
+
+        outputFile << line.substr(startPos);
     }
 
     inputFile.close();

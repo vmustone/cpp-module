@@ -6,13 +6,13 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:48:02 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 01:06:11 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 08:04:51 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void	randomChump(std::string name) {
+void	randomChump( std::string name ) {
 	Zombie zombie = Zombie();
 	zombie.setName(name);
 	zombie.announce();

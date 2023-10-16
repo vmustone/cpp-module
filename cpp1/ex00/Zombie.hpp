@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:21:27 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 19:02:23 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:56:10 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 # include <string>
 # include <iostream>
 
-using std::string;
-using std::cout;
-using std::cin;
-
 class Zombie {
 	private:
-		string _name;
+		std::string _Name;
 	public:
 		Zombie();
+		~Zombie();
 		void	announce(void);
-		string	getName();
-		void	setName(string newName);
+		void	setName(std::string newName);
 };
 
-Zombie *newZombie(string name);
-void	randomChump(std::string name);
+Zombie *newZombie( std::string name );
+void	randomChump( std::string name );
 #endif

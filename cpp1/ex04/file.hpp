@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:40:43 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/09 22:11:17 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 08:38:50 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,8 @@
 # include <iostream>
 # include <fstream>
 
-using std::string;
-using std::cout;
-using std::endl;
-using std::cerr;
-using std::ifstream;
-using std::ofstream;
-using std::getline;
-
 class File {
 	public:
-		void	replaceInFile(string filename, string s1, string s2);
+		void	replaceInFile(std::string filename, std::string s1, std::string s2);
 };
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: villemustonen <villemustonen@student.42    +#+  +:+       +#+        */
+/*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:35:41 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/09 05:13:04 by villemuston      ###   ########.fr       */
+/*   Updated: 2023/10/16 08:39:01 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv) {
     if (argc != 4) {
-        cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << endl;
+    	std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
         return 1;
     }
 	File	newFile;

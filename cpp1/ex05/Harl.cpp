@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:51:48 by villemuston       #+#    #+#             */
-/*   Updated: 2023/10/09 20:41:44 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:31:19 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    Harl::error( void ) {
 void    Harl::complain(std::string level)
 {
     std::string choice[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    t_func funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    t_func funcs[4] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
     for (int i = 0; i < 4; i++)
     {

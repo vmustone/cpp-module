@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:04:57 by vmustone          #+#    #+#             */
-/*   Updated: 2023/10/03 19:04:11 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:10:47 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 int main(void) {
 	Zombie *zombie;
-	string input;
+	std::string input;
 
-	cout << "New zombie has born, you need to name it: ";
-	getline(cin, input);
-	zombie = newZombie(input);
+	std::cout << "New zombie has born, name it: ";
+	std::getline(std::cin, input);
+	try {
+		zombie = newZombie(input);
+	}
+	catch (const std::bad_alloc& e) {
+		std::cout << "Issue allocating zombie\n";
+		return 1;
+	}
 	zombie->announce();
 	delete zombie;
 
-	cout << "Another zombie has born, first one died in a battle, again you need to name it: ";
-	getline(cin, input);
+	std::cout << "Another zombie has born, name it: ";
+	std::getline(std::cin, input);
 	randomChump(input);
 	return 0;
 }
