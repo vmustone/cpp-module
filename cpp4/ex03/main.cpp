@@ -12,21 +12,23 @@ int main()
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
 
-    ICharacter* me = new Character("me");
+    ICharacter* Matti = new Character("Matti");
 
     AMateria* tmp;
     tmp = src->createMateria("ice");
-    me->equip(tmp);
+    Matti->equip(tmp);
     tmp = src->createMateria("cure");
-    me->equip(tmp);
+	tmp = src->createMateria("cusdgre");
+    Matti->equip(tmp);
 
-    ICharacter* bob = new Character("bob");
+    ICharacter* Teppo = new Character("Teppo");
 
-    me->use(0, *bob);
-    me->use(1, *bob);
+    Matti->use(0, *Teppo);
+    Matti->use(1, *Teppo);
+	Matti->unequip(1);
 
-    delete bob;
-    delete me;
+    delete Teppo;
+    delete Matti;
     delete src;
 
     return 0;

@@ -28,17 +28,14 @@ AMateria&	AMateria::operator=(const AMateria& other) {
 	return *this;
 }
 
-std::string const & AMateria::getType() const
-{
+std::string const & AMateria::getType() const {
     return _type;
 }
 
-AMateria* AMateria::clone() const
-{
+AMateria* AMateria::clone() const {
     return (AMateria*)this;
 }
 
-void    AMateria::use( ICharacter& target )
-{
+void    AMateria::use(ICharacter& target) {
     std::cout << "AMateria " << _type << " used on " << target.getName() << std::endl;
 }

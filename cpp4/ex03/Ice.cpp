@@ -1,19 +1,20 @@
 #include "Ice.hpp"
 
 Ice::Ice() : AMateria("ice") {
-    std::cout << "* Ice: materia is created *" << std::endl;
+    std::cout << "Ice constructor called" << std::endl;
 }
 
 Ice::~Ice() {
-    std::cout << "* Ice: ice is destroyed *" << std::endl;
+    std::cout << "Ice destructor called" << std::endl;
 }
 
 Ice::Ice( Ice const & src ) : AMateria("ice") {
-    std::cout << "* Ice: materia is copied *" << std::endl;
+    std::cout << "Ice copy constructor called" << std::endl;
 	*this = src;
 }
 
 Ice&   Ice::operator=( const Ice& rhs ) {
+	std::cout << "Ice assignation operator called" << std::endl;
     if (this != &rhs) {
         this->_type = rhs._type;
     }
@@ -25,5 +26,5 @@ AMateria* Ice::clone() const {
 }
 
 void    Ice::use( ICharacter& target ) {
-    std::cout << "I shoots an ice bolt at " << target.getName() << std::endl;
+    std::cout << "* shoots an ice bolt at *" << target.getName() << std::endl;
 }

@@ -1,8 +1,8 @@
-Name = animal
+Name = amateria
 
 Flags = -std=c++98 -Wall -Werror -Wextra
 
-Src = main.cpp
+Src = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 Obj = $(Src:%.cpp=%.o)
 
