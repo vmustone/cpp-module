@@ -1,7 +1,14 @@
 #include "Character.hpp"
 
+Character::Character() {
+	std::cout << "Character default constructor called" << std::endl;
+	for (int i = 0; i < 4; i++) {
+		_inv[i] = NULL;
+	} 
+}
+
 Character::Character(std::string name) {
-	std::cout << "Character constructor called" << std::endl;
+	std::cout << "Character name constructor called" << std::endl;
 	_Name = name;
 	for (int i = 0; i < 4; i++) {
 		_inv[i] = NULL;
@@ -20,7 +27,8 @@ Character::Character(const Character& other) {
 	std::cout << "Character copy constructor called" << std::endl;
 	_Name = other._Name;
 	for (int i = 0; i < 4; i++)
-         _inv[i] = other._inv[i];
+		if (other._inv[i])
+        	_inv[i] = other._inv[i]->clone();
 }
 
 Character& Character::operator=(const Character& other) {
@@ -29,7 +37,8 @@ Character& Character::operator=(const Character& other) {
     {
         this->_Name = other._Name;
         for (int i = 0; i < 4; i++)
-            this->_inv[i] = other._inv[i];
+			if (other._inv[i])
+            	this->_inv[i] = other._inv[i]->clone();
     }
     return *this;
 }
@@ -56,9 +65,9 @@ void    Character::unequip( int idx ) {
 }
 
 void    Character::use( int idx, ICharacter& target ) {
-    if (_inv[idx]) {
+
+	if (_inv[idx]) {
         _inv[idx]->use(target);
-        std::cout << "Character " << _Name << " uses " << _inv[idx]->getType() << std::endl;
     } else {
         std::cout << "Character " << _Name << " can't use" << std::endl;
 	}
@@ -66,4 +75,8 @@ void    Character::use( int idx, ICharacter& target ) {
 
 std::string const& Character::getName() const {
     return _Name;
+}
+
+AMateria* Character::getInv(int idx) const {
+    return _inv[idx];
 }

@@ -17,7 +17,7 @@ AMateria::AMateria(std::string const & type) {
 
 AMateria::AMateria(const AMateria& other) {
 	std::cout << "AMateria copy constructor called" << std::endl;
-	*this = other;
+	_type = other._type;
 }
 
 AMateria&	AMateria::operator=(const AMateria& other) {
@@ -30,10 +30,6 @@ AMateria&	AMateria::operator=(const AMateria& other) {
 
 std::string const & AMateria::getType() const {
     return _type;
-}
-
-AMateria* AMateria::clone() const {
-    return (AMateria*)this;
 }
 
 void    AMateria::use(ICharacter& target) {

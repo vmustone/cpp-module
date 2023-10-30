@@ -15,7 +15,8 @@ MateriaSource::~MateriaSource() {
 
 MateriaSource::MateriaSource(const	MateriaSource& other) {
 	std::cout << "MateriaSource copy constructor called" << std::endl;
-    *this = other;
+	for (int i = 0; i < 4; i++)
+		materias[i] = other.materias[i];
 }
 
 MateriaSource& MateriaSource::operator=(const	MateriaSource& other) {
@@ -45,7 +46,10 @@ void    MateriaSource::learnMateria( AMateria* m ) {
 
 AMateria*   MateriaSource::createMateria( std::string const& type ) {
     for ( int i = 0; i < 4; i++ )
-        if ( materias[i] && materias[i]->getType() == type )
+        if ( materias[i] && materias[i]->getType() == type ) {
+			std::cout << "Materia " << type << " created" << std::endl;
             return materias[i]->clone();
+		}
+	std::cout << "couldn't create " << type << " materia" << std::endl;
     return NULL;
 }
