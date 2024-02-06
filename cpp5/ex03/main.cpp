@@ -23,19 +23,44 @@ int main( void )
         PresidentialPardonForm form3("President");
 
 
-        bureaucrat.signForm(form1);
+        bureaucrat.signAForm(form1);
         bureaucrat.executeForm(form1);
 
-        bureaucrat.signForm(form2);
+        bureaucrat.signAForm(form2);
         bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-
-        bureaucrat.signForm(form3);
+    
+        bureaucrat.signAForm(form3);
         bureaucrat.executeForm(form3);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
     return 0;
 }
+/*
+int main()
+{
+	std::cout << "==================================================" << std::endl;
+	{
+		Intern someRandomIntern;
+		Bureaucrat Steve("Steve",1);
+		AForm* rrf;
+		rrf = someRandomIntern.makeForm("Wrong request", "Bender");
+		rrf = someRandomIntern.makeForm("presidental request", "Bender");
+		Steve.signAForm(*rrf);
+		Steve.executeForm(*rrf);
+		delete rrf;
+	}
+	{
+		Intern someRandomIntern;
+		Intern* someRandomInternCopy = new Intern(someRandomIntern);
+		Bureaucrat Steve("Steve",1);
+		AForm* rrf;
+		rrf = someRandomInternCopy->makeForm("presidental request", "Bender");
+		Steve.signAForm(*rrf);
+		Steve.executeForm(*rrf);
+		delete rrf;
+	}
+	std::cout << "==================================================" << std::endl;
+	return (0);
+}
+*/

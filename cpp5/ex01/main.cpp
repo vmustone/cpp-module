@@ -9,8 +9,12 @@ int main() {
         bureaucrat.signForm(form);
         std::cout << form << std::endl;
 
+		Bureaucrat bureaucrat2("Matti", 149);
         Form form2("FormB", 60, 70);
-        bureaucrat.signForm(form2); // This will throw GradeTooLowException
+
+        bureaucrat2.signForm(form2);
+		std::cout << form2 << std::endl;
+
     } catch (const std::exception& e) {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }

@@ -12,7 +12,7 @@ private:
 public:
 	ShrubberyCreationForm();
     ShrubberyCreationForm(const std::string& target);
-    ShrubberyCreationForm( const ShrubberyCreationForm& other);
+    ShrubberyCreationForm(const ShrubberyCreationForm& other);
     ~ShrubberyCreationForm();
 
     ShrubberyCreationForm& operator=(ShrubberyCreationForm& other);

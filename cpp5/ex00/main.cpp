@@ -12,6 +12,15 @@ int main(void)
         bureaucrat.decrementGrade();
         std::cout << bureaucrat << std::endl;
 
+		bureaucrat.incrementGrade();
+        std::cout << bureaucrat << std::endl;
+
+		bureaucrat.incrementGrade();
+        std::cout << bureaucrat << std::endl;
+
+		bureaucrat.incrementGrade();
+        std::cout << bureaucrat << std::endl;
+
     } catch (const std::exception& e) {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
