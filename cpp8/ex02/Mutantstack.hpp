@@ -10,14 +10,12 @@ class MutantStack : public std::stack<T> {
 		MutantStack(const MutantStack &other);
 		MutantStack& operator=(const MutantStack& other);
 	public:
+		typedef typename std::deque<T>::iterator iterator;
 		MutantStack(){};
 		~MutantStack(){};
-	    using std::stack<T>::c;
 
-		typedef typename std::stack<T>::container_type::iterator iterator;
-
-	    iterator begin() { return std::begin(c); }
-	    iterator end() { return std::end(c); }
+	    iterator begin() { return this->c.begin(); }
+	    iterator end() { return this->c.end(); }
 };
 
 #endif

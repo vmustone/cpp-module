@@ -1,5 +1,5 @@
 #include "Span.hpp"
-
+/*
 int main() {
     try {
         Span sp = Span(5);
@@ -17,7 +17,7 @@ int main() {
         additionalNumbers.push_back(8);
         additionalNumbers.push_back(2);
         additionalNumbers.push_back(15);
-        sp.addNumbers(additionalNumbers.begin(), additionalNumbers.end());
+        sp.addNumbers(3);
 
         std::cout << "Shortest Span after adding more numbers: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest Span after adding more numbers: " << sp.longestSpan() << std::endl;
@@ -27,4 +27,18 @@ int main() {
     }
 
     return 0;
+}
+*/
+
+int main()
+{
+Span sp = Span(5);
+sp.addNumber(6);
+sp.addNumber(3);
+sp.addNumber(17);
+sp.addNumber(9);
+sp.addNumber(11);
+std::cout << sp.shortestSpan() << std::endl;
+std::cout << sp.longestSpan() << std::endl;
+return 0;
 }

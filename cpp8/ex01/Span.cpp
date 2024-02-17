@@ -1,7 +1,7 @@
 #include "Span.hpp"
 
 Span::Span(unsigned int num) {
-	maxSize = num;
+	_maxSize = num;
 }
 
 Span::~Span() {
@@ -13,39 +13,36 @@ Span::Span(const Span &other) {
 
 Span& Span::operator=(const Span &other) {
 	if (this != &other) {
-		this->maxSize = other.maxSize;
-		this->numbers = other.numbers;
+		_maxSize = other._maxSize;
+		_numbers = other._numbers;
 	}
 	return (*this);
 }
 
 void Span::addNumber(int number) {
-    if (numbers.size() >= maxSize) {
+    if (_numbers.size() >= _maxSize) {
         throw std::runtime_error("Cannot add more numbers. Maximum size reached.");
     }
-    numbers.push_back(number);
+    _numbers.push_back(number);
 }
 
-void Span::addNumbers(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end) {
-    size_t remainingSpace = maxSize - numbers.size();
-    size_t inputSize = std::distance(begin, end);
-
-    if (inputSize > remainingSpace) {
-        throw std::runtime_error("Cannot add more numbers. Maximum size reached.");
+void Span::addNumbers(const unsigned int num) {
+    for(unsigned int i = 0; i < num; i++) {
+        addNumber(i);
     }
 }
 
-int Span::shortestSpan() const{
-    if (numbers.size() < 2) {
+unsigned int Span::shortestSpan() {
+    if (_numbers.size() < 2) {
         throw std::runtime_error("Cannot find span. Not enough numbers.");
     }
 
-    std::vector<int> sortedNumbers = numbers;
+    std::vector<int> sortedNumbers = _numbers;
     std::sort(sortedNumbers.begin(), sortedNumbers.end());
 
     int minSpan = sortedNumbers[1] - sortedNumbers[0];
 
-    for (size_t i = 2; i < sortedNumbers.size(); ++i) {
+    for (unsigned int i = 2; i < sortedNumbers.size(); ++i) {
         int currentSpan = sortedNumbers[i] - sortedNumbers[i - 1];
         minSpan = std::min(minSpan, currentSpan);
     }
@@ -53,10 +50,11 @@ int Span::shortestSpan() const{
     return minSpan;
 }
 
-int Span::longestSpan() const{
-    if (numbers.size() < 2) {
+unsigned int Span::longestSpan() {
+    if (_numbers.size() < 2) {
         throw std::runtime_error("Cannot find span. Not enough numbers.");
     }
-
-    return *std::max_element(numbers.begin(), numbers.end()) - *std::min_element(numbers.begin(), numbers.end());
+    std::vector<int> sortedNumbers = _numbers;
+    std::sort(sortedNumbers.begin(), sortedNumbers.end());
+    return std::abs(sortedNumbers.back() - sortedNumbers.front());
 }

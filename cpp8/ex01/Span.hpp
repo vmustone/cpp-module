@@ -5,12 +5,15 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <limits>
 
 class Span {
 
 	private:
-		unsigned int maxSize;
-		std::vector<int> numbers;
+		unsigned int _maxSize;
+		std::vector<int> _numbers;
+		Span();
+
 	public:
 		Span(unsigned int num);
 		~Span();
@@ -18,9 +21,9 @@ class Span {
 		Span& operator=(const Span &other);
 
 		void addNumber(int number);
-		void addNumbers(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end);
-		int shortestSpan() const;
-		int longestSpan() const;
+		void addNumbers(const unsigned int num);
+		unsigned int shortestSpan();
+		unsigned int longestSpan();
 
 };
 
