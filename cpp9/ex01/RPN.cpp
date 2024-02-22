@@ -33,10 +33,10 @@ float Rpn(const std::string& expression) {
                 std::cerr << "Error: Insufficient operands for operator " << token << std::endl;
                 std::exit(1);
             }
-            float operand2 = operands.top(); operands.pop();
             float operand1 = operands.top(); operands.pop();
+            float operand2 = operands.top(); operands.pop();
             float result = Operation(operand1, operand2, token[0]);
-            operands.push(result); // Lisää tulos pinoon
+            operands.push(result);
         } else {
             std::cerr << "Error" << std::endl;
             std::exit(1);

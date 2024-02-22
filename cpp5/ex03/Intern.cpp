@@ -18,25 +18,36 @@ Intern& Intern::operator=(const Intern& other) {
 	return (*this);
 }
 
-AForm*   Intern::makeForm(std::string formName, std::string target) {
+static AForm	*makePresident(const std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
 
-    std::string formNames[] = {
-        "robotomy request",
-        "presidential pardon",
-        "shrubbery creation"
-    };
-    AForm*    forms[] = {
-        new RobotomyRequestForm(target),
-        new PresidentialPardonForm(target),
-        new ShrubberyCreationForm(target)
-    };
-    
-    for (int i = 0; i < 3; i++) {
-        if (formName == formNames[i]) {
-            std::cout << "Intern creates " << formName << std::endl;
-            return forms[i];
-        }
-    }
-    std::cout << "Intern cannot create " << formName << " form" << std::endl;
-    return nullptr;
+static AForm	*makeRobot(const std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*makeShrubbery(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+
+AForm*	Intern::makeForm(std::string formName, std::string target)
+{
+	AForm *(*all_forms[])(const std::string targets) = {&makePresident, &makeRobot, &makeShrubbery};
+	std::string forms[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (formName == forms[i])
+		{
+			std::cout << "Intern creates " << formName << std::endl;
+			return (all_forms[i](target));
+		}
+	}
+
+	 std::cout << "Intern cannot create " << formName << " form" << std::endl;
+	return (NULL);
 }

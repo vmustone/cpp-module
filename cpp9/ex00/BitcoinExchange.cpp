@@ -1,31 +1,23 @@
 #include "BitcoinExchange.hpp"
 
-std::vector<std::string> split(const std::string &s, char delimiter) {
-    std::vector<std::string> tokens;
-    std::string token;
-    std::stringstream tokenStream(s);
-    while (getline(tokenStream, token, delimiter)) {
-        tokens.push_back(token);
-    }
-    return tokens;
-}
-
 std::map<std::string, float> loadBitcoinData(const std::string &filename) {
     std::map<std::string, float> bitcoinData;
     std::ifstream file(filename);
+
+    if (!file.is_open())
+        throw std::invalid_argument("could not open data.csv file");
+
     std::string line;
     getline(file, line);
     while (getline(file, line)) {
-        std::vector<std::string> parts = split(line, ',');
-        if (parts.size() == 2) {
-            std::string dateString = parts[0];
-            std::string priceString = parts[1];
-            bitcoinData[dateString] = stof(priceString);
+        if (line.size() >= 12) {
+            std::string dateString = line.substr(0, 10);
+            std::string priceString = line.substr(11);
+            bitcoinData[dateString] = std::stof(priceString);
         }
     }
     return bitcoinData;
 }
-
 
 std::string findClosestDate(const std::map<std::string, float> &bitcoinData, const std::string &targetDate) {
     std::string closestDate;
@@ -35,8 +27,9 @@ std::string findClosestDate(const std::map<std::string, float> &bitcoinData, con
     strptime(targetDate.c_str(), "%Y-%m-%d", &targetTm);
     time_t targetTime = mktime(&targetTm);
 
-    for (std::map<std::string, float>::const_iterator it = bitcoinData.begin(); it != bitcoinData.end(); ++it) {
-        // Muunna mapin avain tm-rakenteeksi
+    std::map<std::string, float>::const_iterator it;
+
+    for (it = bitcoinData.begin(); it != bitcoinData.end(); ++it) {
         const std::string &key = it->first;
         const float &value = it->second;
 
@@ -44,8 +37,8 @@ std::string findClosestDate(const std::map<std::string, float> &bitcoinData, con
         strptime(key.c_str(), "%Y-%m-%d", &mapTm);
         time_t mapTime = mktime(&mapTm);
 
-        double difference = std::abs(difftime(mapTime, targetTime));
-        if (difference < minDifference) {
+        double difference = difftime(targetTime, mapTime);
+        if (difference >= 0 && difference < minDifference) {
             minDifference = difference;
             closestDate = key;
         }
@@ -53,15 +46,27 @@ std::string findClosestDate(const std::map<std::string, float> &bitcoinData, con
 
     return closestDate;
 }
-
-bool isValidValue(const std::string &valueString) {
-    try {
-        float value = stof(valueString);
-        if (value < 0 || value > 1000) {
+bool isNumeric(const std::string& str) {
+    bool decimalPointFound = false;
+    for (int i = 0; i < str.size(); ++i) {
+        char c = str[i];
+        if (c == '.') {
+            if (decimalPointFound) {
+                return false;
+            }
+            decimalPointFound = true;
+        } else if (!std::isdigit(c)) {
             return false;
         }
-        return true;
-    } catch (const std::exception &) {
+    }
+    return true;
+}
+
+bool isValidDate(const std::string& dateString) {
+    std::tm tm = {};
+	char *date = strptime(dateString.c_str(), "%Y-%m-%d", &tm);
+    if (date == nullptr || *date != 0 || tm.tm_mday <= 0) {
         return false;
     }
+    return true;
 }

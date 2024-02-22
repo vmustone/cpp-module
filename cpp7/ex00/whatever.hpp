@@ -11,13 +11,13 @@ void swap(T &a, T &b) {
 }
 
 template <typename T>
-T min(T a, T b) {
-    return (b < a) ? b : a;
+T &min(T &a, T &b) {
+    return (b < a ? b : a);
 }
 
 template <typename T>
-T max(T a, T b) {
-    return (a < b) ? b : a;
+T &max(T &a, T &b) {
+    return (a < b ? b : a);
 }
 
 #endif

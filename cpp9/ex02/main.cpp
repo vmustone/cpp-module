@@ -6,7 +6,7 @@ int main (int argc, char **argv)
     {
         if (argc < 2 )
             throw ": Enter args";
-        std::list<int> list;
+        std::vector<int> Vec;
         std::deque<int> Deq;
         double vectorSortingTime;
         double dequeSortingTime;
@@ -18,17 +18,17 @@ int main (int argc, char **argv)
                 throw "";
             if (number < 0)
                 throw ": Negative number !";
-            list.push_back(number);
+            Vec.push_back(number);
             Deq.push_back(number);
         }
 
-        print(list, Deq);
-        caluclateTime(list, Deq , vectorSortingTime, dequeSortingTime);
+        print(Vec, Deq);
+        caluclateTime(Vec, Deq , vectorSortingTime, dequeSortingTime);
         std::cout << std::endl;
 
-        print(list, Deq);
-        std::cout << std::endl << "Time to process a range of " <<  argc - 1 <<  " elements with std::list : " << vectorSortingTime << " us" << std::endl;
-        std::cout << "Time to process a range of " <<  argc - 1 <<  " elements with std::deque :  " << dequeSortingTime << " us" << std::endl;
+        print(Vec, Deq);
+        std::cout << std::endl << "Time to process a range of " <<  argc - 1 <<  " elements with std::vector : " << vectorSortingTime << " us" << std::endl;
+        std::cout << "Time to process a range of " <<  argc - 1 <<  " elements with std::deque : " << dequeSortingTime << " us" << std::endl;
     }
     catch(const char *errorMsg)
     {

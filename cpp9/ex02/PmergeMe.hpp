@@ -1,21 +1,20 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include <algorithm>
 #include <iostream>
 #include <deque>
-#include <ctime>
 #include <sstream>
-#include <cstddef>
-#include <list>
+#include <vector>
 
-void mergeInsertSortList(std::list<int> &container, int start, int end);
-void mergeSortList(std::list<int> &container, int start, int mid, int end);
-void insertSortList(std::list<int> &container, int start, int end);
-void mergeInsertSortDeque(std::deque<int> &container, int start, int end);
-void mergeSortDeque(std::deque<int> &container, int start, int mid, int end);
-void insertSortDeque(std::deque<int> &container, int start, int end);
-void caluclateTime(std::list<int> &Lcontainer, std::deque<int> &Dcontainer, double &ListTime, double &deqTime);
-void print(std::list<int> &Lis, std::deque<int> &Deq);
+void mergeInsertSortVec(std::vector<int> &container, int start, int end);
+void mergeSortVec(std::vector<int> &container, int start, int mid, int end);
+void insertSortVec(std::vector<int> &container, int start, int end);
+
+void mergeInsertSortDeq(std::deque<int> &container, int start, int end);
+void mergeSortDeq(std::deque<int> &container, int start, int mid, int end);
+void insertSortDeq(std::deque<int> &container, int start, int end);
+
+void caluclateTime(std::vector<int> &Vcon, std::deque<int> &Dcon, double &vecTime, double &deqTime);
+void print(std::vector<int> &Vec, std::deque<int> &Deq);
 
 #endif

@@ -14,10 +14,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
     return *this;
 }
 
-void ScalarConverter::convert(const std::string& literal) {
+void ScalarConverter::convert(const std::string literal) {
 	char charValue = '\0';
     int intValue = 0;
-
     try {
         if (literal == "-inf" || literal == "-inff") {
             std::cout << "Char: Impossible" << std::endl;
@@ -38,14 +37,19 @@ void ScalarConverter::convert(const std::string& literal) {
             std::cout << "Double: nan" << std::endl;
             return;
         }
+		if (!literal.empty())
+        	intValue = std::stoi(literal);
+		else
+			intValue = 0;
 
-        intValue = std::stoi(literal);
-        std::cout << "Char: ";
-        if (intValue >= 0 && intValue <= 127) {
-            charValue = static_cast<char>(intValue);
-            std::cout << charValue << std::endl;
-        } else {
-            std::cout << "Impossible" << std::endl;
+        if(isprint(intValue))
+			std::cout << "char: " << static_cast<char>(intValue) << std::endl;
+		else {
+       		if (intValue < 0 || intValue > 255)
+            	std::cout << "char: Impossible" << std::endl;
+		
+        	else
+            	std::cout << "char: Non displayable" << std::endl;
         }
         std::cout << "Int: " << intValue << std::endl;
 

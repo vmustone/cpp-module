@@ -22,13 +22,14 @@ Span& Span::operator=(const Span &other) {
 void Span::addNumber(int number) {
     if (_numbers.size() >= _maxSize) {
         throw std::runtime_error("Cannot add more numbers. Maximum size reached.");
-    }
+	}
     _numbers.push_back(number);
 }
 
 void Span::addNumbers(const unsigned int num) {
     for(unsigned int i = 0; i < num; i++) {
         addNumber(i);
+		std::cout << "adding " << i << std::endl;
     }
 }
 

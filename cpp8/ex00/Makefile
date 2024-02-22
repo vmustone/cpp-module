@@ -1,6 +1,6 @@
 Name = easyfind
 
-Flags = -std=c++11 -Wall -Werror -Wextra
+Flags = -std=c++98 -Wall -Werror -Wextra
 
 Src = main.cpp
 

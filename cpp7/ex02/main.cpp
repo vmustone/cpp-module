@@ -1,7 +1,93 @@
 #include "Array.hpp"
 
-#define MAX_VAL 750
+int main() {
+    std::cout << "Test construction with no parameter (empty array)" << std::endl;
+	std::cout << "-------------------------------------------------" << std::endl;
+    Array<int> emptyArray;
+    std::cout << "Empty array size: " << emptyArray.size() << std::endl;
+	for (int i = 0; i < emptyArray.size(); i++) {
+        std::cout << "Element at index " << i << ": " << emptyArray[i] << std::endl;
+    }
+	std::cout << std::endl;
+
+
+    std::cout << "Test construction with an unsigned int n as a parameter" << std::endl;
+	std::cout << "-------------------------------------------------------" << std::endl;
+    Array<int> intArray(5);
+    std::cout << "Initialized array size: " << intArray.size() << std::endl;
+	for (int i = 0; i < intArray.size(); ++i) {
+        std::cout << "Element at index " << i << ": " << intArray[i] << std::endl;
+    }
+	std::cout << std::endl;
+
+
+    std::cout << "Test subscript operator and size function" << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
+    for (int i = 0; i < intArray.size(); ++i) {
+        intArray[i] = i * 2;
+        std::cout << "Element at index " << i << ": " << intArray[i] << std::endl;
+    }
+	std::cout << std::endl;
+
+
+    std::cout << "Test copy construction and assignment operator" << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+    Array<int> copyArray(intArray);
+    std::cout << "Copied array size: " << copyArray.size() << std::endl;
+	for (int i = 0; i < intArray.size(); ++i) {
+        std::cout << "Element at index " << i << ": " << intArray[i] << std::endl;
+    }
+	std::cout << std::endl;
+
+
+    std::cout << "Modify the original array and check if the copy remains unchanged" << std::endl;
+	std::cout << "-----------------------------------------------------------------" << std::endl;
+    intArray[0] = 100;
+    std::cout << "Modified original array. Copy array first element: " << copyArray[0] << std::endl;
+	for (int i = 0; i < copyArray.size(); ++i) {
+        std::cout << "Element at index " << i << ": " << copyArray[i] << std::endl;
+    }
+	std::cout << std::endl;
+
+
+	std::cout << "Test with strings" << std::endl;
+	std::cout << "-----------------" << std::endl;
+	Array<std::string> str(5);
+	str[0] = "aaa";
+	str[1] = "bbb";
+	str[2] = "ccc";
+	str[3] = "ddd";
+	str[4] = "eee";
+
+	for(int i = 0; i < 5; i++) {
+		std::cout << "Element at index " << i << ": " << str[i] << std::endl;
+	}
+	std::cout << std::endl;
+
+
+	std::cout << "Test with modifying last string" << std::endl;
+	std::cout << "-------------------------------" << std::endl;
+	str[4] = "Hello World";
+	for(int i = 0; i < 5; i++) {
+		std::cout << "Element at index " << i << ": " << str[i] << std::endl;
+	}
+	std::cout << std::endl;
+
+
+    std::cout << "Test exception handling for out-of-bounds access" << std::endl;
+	std::cout << "------------------------------------------------" << std::endl;
+    try {
+        intArray[10] = 42;
+    } catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+
+
 /*
+#define MAX_VAL 750
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -52,36 +138,3 @@ int main(int, char**)
     return 0;
 }
 */
-
-int main() {
-    // Test construction with no parameter (empty array)
-    Array<int> emptyArray;
-    std::cout << "Empty array size: " << emptyArray.size() << std::endl;
-
-    // Test construction with an unsigned int n as a parameter
-    Array<int> intArray(5);
-    std::cout << "Initialized array size: " << intArray.size() << std::endl;
-
-    // Test subscript operator and size function
-    for (std::size_t i = 0; i < intArray.size(); ++i) {
-        intArray[i] = i * 2;
-        std::cout << "Element at index " << i << ": " << intArray[i] << std::endl;
-    }
-
-    // Test copy construction and assignment operator
-    Array<int> copyArray(intArray);
-    std::cout << "Copied array size: " << copyArray.size() << std::endl;
-
-    // Modify the original array and check if the copy remains unchanged
-    intArray[0] = 100;
-    std::cout << "Modified original array. Copy array first element: " << copyArray[0] << std::endl;
-
-    // Test exception handling for out-of-bounds access
-    try {
-        intArray[10] = 42; // This should throw an exception
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-
-    return 0;
-}

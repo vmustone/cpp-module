@@ -13,7 +13,6 @@ $(Name): $(Src) $(Obj)
 
 clean:
 	rm -f $(Obj)
-	rm -f ShrubberyCreationForm_shrubbery
 
 fclean: clean
 	rm -f $(Name)

@@ -3,17 +3,11 @@
 
 #include <iostream>
 #include <map>
-#include <string>
 #include <fstream>
-#include <vector>
-#include <sstream>
-#include <ctime>
-#include <chrono>
 
-std::vector<std::string> split(const std::string &s, char delimiter);
 std::map<std::string, float> loadBitcoinData(const std::string &filename);
 std::string findClosestDate(const std::map<std::string, float> &bitcoinData, const std::string &targetDate);
 
-bool isValidValue(const std::string &valueString);
-
+bool isNumeric(const std::string& str);
+bool isValidDate(const std::string& dateString);
 #endif

@@ -3,7 +3,7 @@
 int main(void)
 {
 	try {
-        Bureaucrat bureaucrat("Matti", 50);
+        Bureaucrat bureaucrat("Matti", 150);
         std::cout << bureaucrat << std::endl;
 
         bureaucrat.incrementGrade();
@@ -11,6 +11,8 @@ int main(void)
 
         bureaucrat.decrementGrade();
         std::cout << bureaucrat << std::endl;
+		bureaucrat.decrementGrade();
+        std::cout << bureaucrat.getGrade() << std::endl;
 
 		bureaucrat.incrementGrade();
         std::cout << bureaucrat << std::endl;
